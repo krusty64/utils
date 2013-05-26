@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	"reflect"
 	"strings"
 )
 
@@ -14,7 +13,8 @@ func filter_harmless(err error, data []byte) error {
 		return nil
 	}
 
-	// This error is relatively minor, usually bad data.
+	// This error is relatively minor, usually data that doesn't match
+	// the interface, but parsing still finished.
 	_, ok := err.(*json.UnmarshalTypeError)
 	if ok {
 		log.Println("Warning:", err)
@@ -23,7 +23,6 @@ func filter_harmless(err error, data []byte) error {
 
 	syntax, ok := err.(*json.SyntaxError)
 	if !ok {
-		log.Println(reflect.TypeOf(err))
 		// must be a real error
 		return err
 	}

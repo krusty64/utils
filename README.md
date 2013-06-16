@@ -8,7 +8,7 @@ golang standard libraries and used across projects.
 Levenshtein string comparison
 -----------------------------
 
-Nice methods to compute a distance between strings. Multiple implementataions,
+Nice methods to compute a distance between strings. Multiple implementations,
 low memory footprint, one UTF-8 compatible.
 
 
